@@ -1,0 +1,109 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HOME</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travello template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
+</head>
+
+<body>
+<div class="super_container">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand"><img src="{% static 'images/lo.png' %}"  alt="logimage" width="130px;" height="130px;"><h4>Banking service</h4></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+				{% if user.is_authenticated %}
+				<li><b>Hello...{{user.username}}!</b></li>
+				<li class="nav-item active"><a class="nav-link" href="logout">Logout</a></li>
+				{% else %}
+				<li class="nav-item active"><a class="nav-link" href="register">Register</a></li>
+				<li class="nav-item active"><a class="nav-link" href="login">Login</a></li>
+				{% endif %}
+				<li class="nav-item active dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Branches</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<p class="nav-item active"><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Delhi">Delhi</a></p>
+						<p class="nav-item active"><a class="dropdown-item" href=" https://en.wikipedia.org/wiki/Karnataka">Karnataka</a></p>
+						<p class="nav-item active"><a class="dropdown-item" href=" https://en.wikipedia.org/wiki/Kerala">Kerala</a></p>
+						<p class="nav-item active"><a class="dropdown-item" href=" https://en.wikipedia.org/wiki/Rajasthan">Rajasthan</a></p>
+						<p class="nav-item active"><a class="dropdown-item" href=" https://en.wikipedia.org/wiki/Tamilnadu">Tamil Nadu</a></p>
+					</div>
+				</li>
+			</ul>
+			  <form class="d-flex" action="login" method="get">
+				   {% csrf_token %}
+				  <button class="btn btn-success my-2 my-sm-0" type="submit">users sign in here</button>
+            </form>
+		</div>
+	</nav>
+
+
+<!--							 Hamburger-->
+	<div><h3 style="background-color:green;text-align:center;color:black;">Welcome{{obj}}...CIB online</h3></div>
+	<div class="why">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/bankp.png' %}" data-speed="0.8"></div>
+	</div>
+	<footer class="footer">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-speed="0.8"></div>
+<!--		data-image-src="{% static 'images/footer_1.jpg' %}-->
+		<div class="container">
+			<div class="row footer_contact_row">
+					<div class="col-xl-10 offset-xl-1">
+						<div class="row">
+							<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><img src="{% static 'images/connect.jpg' %}" alt="c" width="130px;" height="100px;"></div>
+								<div class="footer_contact_title"  style="color:blue;"><b>connect us</b></div>
+									<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul><li style="color:blue;">cbiIndia@gmail.com</li></ul>
+								<div class="header_social d-flex flex-row align-items-center justify-content-start"></div>
+							</div>
+								<div class="col-xl-4 footer_contact_col">
+									<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center"></div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="col text-center" style="color:green;">
+								Copyright &copy; All rights reserved | CIB India Ltd.
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</footer>
+
+
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
+</body>
+</html>

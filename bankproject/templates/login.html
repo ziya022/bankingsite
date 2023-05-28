@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>new</title>
+</head>
+<body style="background-color:skyblue">
+<h2 style="color:blue;text-align:center">LOGIN</h2>
+<form style="border:5px solid white;padding:50px;background-color:olive;text-align:center;" action="login" method="post">
+    {% csrf_token %}
+    Username:<input type="text" name="username" placeholder="Enter your user name"><br>
+    Password:<input type="password" name="password" placeholder="Enter your password"><br>
+    <button class="btn btn-success my-2 my-sm-0" type="submit">submit</button><br>
+       <div><p style="color:white;">New user! Click here
+            <link><a href = "register" target = "_self">Register here</a><link></p></div>
+</form>
+</body>
+</html>

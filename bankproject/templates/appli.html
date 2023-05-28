@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var subjectObject = {
+  "kerala": {
+    "Pathanamthitta": ["Thiruvalla", "Konni"],
+    "Kollam": ["Kottarakara", "Punalur"],
+    "Ernakulam": ["kochi", "Edapally", "Aluva"],
+  }
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+  var chapterSel = document.getElementById("chapter");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+//empty Chapters- and Topics- dropdowns
+ chapterSel.length = 1;
+ topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+  chapterSel.length = 1;
+
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+function Openform() {
+    document.getElementById('form1').style.display = 'block';}
+
+<!--  function showMessage() {-->
+<!--                alert("Hello friends, this is message.");-->
+<!--            }-->
+<!--}-->
+
+</script>
+</head>
+<body bgcolor="#00ffff">
+
+<input id="dynamic" name="Form" type="button" value="Application Form"  onclick="Openform();" style="overflow:hidden;padding: 5px 5px; border-radius: 3px;font-size: 8.5pt; width:250px ; background-color: ##ccffee; font-weight: bold; ">
+<form id="form1" method="post" action="appli" target="_parent" style="display:none;">
+<!--<form name="form1" id="form1" action="/action_page.php">-->
+    <h1 style="color:Black;text-align:center;"><b>FILL THE FORM </b></h1>
+    {% csrf_token %}
+    <div id="demo">
+        <table style="background-color:white;border-radius:30px;border-style:inset;" cellspacing="20" width="680px" align="center">
+
+            <tr><td> First name: <input type = "text" name = "first_name"/>
+                     Last name: <input type = "text" name = "last_name"/></td></tr>
+            <tr><td>DOB: <input type="date" name="date"/></td></tr>
+            <tr><td>Age: <input type="number" name="age"/></td></tr>
+            <tr><td>Gender:
+                <input type = "radio" name= "Gender"  value="Male"> Male
+                <input type = "radio" name ="Gender" value="Female"> Female</td></tr>
+            <tr><td>Phone Number:<input type="tel" id="phone" name="phone"></td></tr>
+            <tr><td>e-mail:<input type="email" name="email"><br></td></tr>
+            <tr><td>Address:<textarea rows="5" cols="70" name="address"></textarea></td></tr>
+            <tr><td>State: <select name="subject" id="subject">
+                <option value="" selected="selected"></option></select></td>
+            <tr><td>Pincode: <input type="number" name="pincode"/></td></tr>
+            <tr><td>District: <select name="topic" id="topic">
+                <option value="" selected="selected">Please select your district</option></select>
+                Branches: <select name="chapter" id="chapter">
+                    <option value="" selected="selected">Please select district first</option></select></td></tr>
+            <tr><td>Account type:<select name = "dropdown">
+                <option value = "sc">Select account type</option>
+                <option value = "Current account">Current account</option>
+                <option value = "Savings account">Savings account</option></select></td></tr>
+
+            <tr><td>Materials provide: <input type = "checkbox" name = "debit card" value = "on">debit card
+                <input type = "checkbox" name = "credit card" value = "on">credit card
+                <input type = "checkbox" name = "cheque book" value = "on">cheque book</td></tr>
+            <tr><td>Username: <input type="text" name="username"><br></td></tr>
+            <tr><td>Password:<input type="password" name="password"><br>
+                Confirm Password:<input type="password" name="password1"> </td></tr>
+
+
+
+        <tr><td>
+
+<!--          <input type="submit"  value="Submit">-->
+<button class="btn btn-success my-2 my-sm-0" type="submit">submit</button><br>
+<!--            <button class="btn btn-success my-2 my-sm-0" type="submit" >Logout</button></td>-->
+        <td><a href="/" class="btn btn-info btn-lg">Return to homepage</a></td></tr>
+
+  </table>
+    </div>
+</form>
+
+<div>
+{% for msg in messages %}
+      <h3 style="color:#ff512f">{{msg}}</h3>
+{% endfor %}
+</div>
+
+</body>
+</html>
